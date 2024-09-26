@@ -13,6 +13,7 @@ repositories {
 dependencies {
     implementation 'org.openjdk.jmh:jmh-core:1.36'
     annotationProcessor 'org.openjdk.jmh:jmh-generator-annprocess:1.36'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3' // Add coroutines dependency
 
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
 }
@@ -22,4 +23,21 @@ test {
 }
 kotlin {
     jvmToolchain(17)
+}
+
+String jmhIncludes = findProperty("jmhIncludes")
+jmh {
+    if (jmhIncludes != null) {
+        includes = [jmhIncludes]
+    }
+
+    // sets the number of separate JVM processes to fork for the benchmark, help isolate the benchmark from the build process and other benchmarks
+    fork = 1
+
+    // number of measurement iterations to perform
+    iterations = 1
+
+    // number of warmup iterations to perform before the actual measurement
+    // warming up will help the JIT to optimize the code
+    warmupIterations = 1
 }
