@@ -1,4 +1,4 @@
-# jmh-template
+# Running benchmark using Kotlin 
 
 ## How to run
 ```shell
