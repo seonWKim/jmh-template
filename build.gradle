@@ -11,9 +11,11 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.openjdk.jmh:jmh-core:1.36'
     annotationProcessor 'org.openjdk.jmh:jmh-generator-annprocess:1.36'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3' // Add coroutines dependency
+
+    implementation 'org.openjdk.jmh:jmh-core:1.36'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3'
+    implementation 'net.jodah:expiringmap:0.5.9'
 
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
 }
